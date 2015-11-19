@@ -8,9 +8,11 @@ rospy.init_node('skeleton_listener',anonymous=True)
 listener=tf.TransformListener()
 while not rospy.is_shutdown():
 	try:
-		(trans,rot)=listener.lookupTransform('/tf','/left_hand_1',rospy.Duration())
+       		(trans,rot)=listener.lookupTransform('/openni_depth_frame','/left_hand_1',rospy.Duration())
+		print "yes"
 	except (tf.LookupException,tf.ConnectivityException,tf.ExtrapolationException):
-		print "Oops"
-		continue
+        	continue
 
 rospy.spin()
+
+
